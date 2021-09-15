@@ -47,6 +47,9 @@ const PhotoCard = ({ photo }) => {
         title={photo.title}
       />
       <CardContent>
+        <Typography variant="h4">
+          {photo.title}
+        </Typography>
         <Typography>
           {photo.copyright ? 
             <p>Copyright: {photo.copyright}</p>
