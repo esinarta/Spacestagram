@@ -1,6 +1,8 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 
+import LikeButton from './components/LikeButton';
+
 const NASA_API_KEY = process.env.REACT_APP_NASA_API_KEY;
 const NASA_APOD_URL = 'https://api.nasa.gov/planetary/apod';
 
@@ -29,6 +31,7 @@ function App() {
           {photos.map((photo, index) => (
             <div key={index}>
               <img src={photo.hdurl} alt={photo.title} />
+              <LikeButton />
               {photo.copyright ? 
                 <p>Copyright: {photo.copyright}</p>
                 :
