@@ -14,7 +14,12 @@ import LikeButton from '../components/LikeButton';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: "50%",
+    [theme.breakpoints.up('md')]: {
+      maxWidth: "50%",
+    },
+    [theme.breakpoints.down('md')]: {
+      maxWidth: "90%",
+    },
     margin: "10% auto",
   },
   media: {
