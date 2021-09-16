@@ -45,6 +45,9 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: "transparent",
     }
   },
+  errorText: {
+    color: "red",
+  }
 }));
 
 const PhotoCard = ({ photo }) => {
@@ -64,8 +67,8 @@ const PhotoCard = ({ photo }) => {
           title={photo.title}
         />
         :
-        <Typography variant="body2">
-          "Video cannot be played."
+        <Typography className={classes.errorText} variant="body2">
+          Video cannot be played.
         </Typography>
       }
       <CardActions disableSpacing>
