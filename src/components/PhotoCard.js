@@ -14,17 +14,25 @@ import LikeButton from '../components/LikeButton';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: "100%"
+    maxWidth: "50%",
+    margin: "10% auto",
   },
   media: {
     paddingTop: "100%"
   },
+  like: {
+    marginLeft: "2%"
+  },
   expand: {
     transform: "rotate(0deg)",
-    marginLeft: "auto",
     transition: theme.transitions.create("transform", {
       duration: theme.transitions.duration.shortest
     })
+  },
+  expandText: {
+    cursor: "pointer",
+    marginLeft: "2%",
+    userSelect: "none"
   },
   expandOpen: {
     transform: "rotate(180deg)"
@@ -46,11 +54,14 @@ const PhotoCard = ({ photo }) => {
         image={photo.url}
         title={photo.title}
       />
+      <CardActions disableSpacing="true">
+       <LikeButton className={classes.like} />
+      </CardActions>
       <CardContent>
-        <Typography variant="h4">
+        <Typography variant="h6" align="left">
           {photo.title}
         </Typography>
-        <Typography>
+        <Typography align="left">
           {photo.copyright ? 
             <p>Copyright: {photo.copyright}</p>
             :
@@ -59,20 +70,23 @@ const PhotoCard = ({ photo }) => {
           <p>{photo.date}</p>
         </Typography>
       </CardContent>
-      <CardActions disableSpacing>
-        <LikeButton />
+      <CardActions disableSpacing="true">
+        <Typography className={classes.expandText} variant="subtitle2" onClick={handleExpand}>
+          View description
+        </Typography>
         <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded
           })}
           onClick={handleExpand}
+          disableRipple="true"
         >
           <ExpandMoreIcon />
         </IconButton>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography variant="body2">
+          <Typography variant="body2" align="left">
             {photo.explanation}
           </Typography>
         </CardContent>
