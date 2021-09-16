@@ -1,6 +1,7 @@
 import './App.css';
-import { useState, useEffect } from 'react';
-
+import { useState, useEffect, useCallback } from 'react';
+import axios from 'axios';
+import InfiniteScroll from "react-infinite-scroll-component";
 import PhotoCard from './components/PhotoCard';
 
 const NASA_API_KEY = process.env.REACT_APP_NASA_API_KEY;
@@ -8,18 +9,21 @@ const NASA_APOD_URL = 'https://api.nasa.gov/planetary/apod';
 
 function App() {
   const [photos, setPhotos] = useState([]);
+  const [loaded, setLoaded] = useState(false);
+
+  const getPhotos = useCallback((count = 5) => {
+    axios({
+      method: 'get',
+      url: `${NASA_APOD_URL}?api_key=${NASA_API_KEY}&count=${count}`
+    }).then(res => {
+      setPhotos([...photos, ...res.data]);
+      setLoaded(true);
+    });
+  }, [photos]);
 
   useEffect(() => {
-    const getPhotos = async () => {
-      const res = await fetch(`${NASA_APOD_URL}?api_key=${NASA_API_KEY}&count=10`)
-        .then(res => res.json())
-        .then(data => {
-          setPhotos(data);
-        });
-      return res;
-    };
     getPhotos();
-  },[]);
+  },[getPhotos]);
 
   return (
     <div className="App">
@@ -27,15 +31,24 @@ function App() {
         <p>Spacestagram</p>
       </header>
       <p>Brought to you by NASA's Astronomy Photo of the Day (APOD) API</p>
-      {photos && (
-        <div className="photos">
-          {photos.map((photo, index) => (
+      <InfiniteScroll
+        dataLength={photos}
+        next={() => {
+          // getPhotos(5)
+        }}
+        hasMore={true}
+        loader={<h4>Loading...</h4>}
+        scrollThreshold={0.95}
+      >
+        {loaded ?
+          photos.map((photo, index) => (
             <div key={index}>
               <PhotoCard photo={photo}/>
             </div>
-          ))}
-        </div>
-      )}
+          ))
+          : ""
+        }
+      </InfiniteScroll>
     </div>
   );
 }

@@ -57,11 +57,15 @@ const PhotoCard = ({ photo }) => {
 
   return (
     <Card className={classes.root}>
-      <CardMedia
-        className={classes.media}
-        image={photo.url}
-        title={photo.title}
-      />
+      {photo.media_type === "image" ? 
+        <CardMedia
+          className={classes.media}
+          image={photo.url}
+          title={photo.title}
+        />
+        :
+        ""
+      }
       <CardActions disableSpacing>
       </CardActions>
       <CardContent className={classes.content}>
