@@ -20,8 +20,11 @@ const useStyles = makeStyles((theme) => ({
   media: {
     paddingTop: "100%"
   },
-  like: {
-    marginLeft: "2%"
+  content: {
+    padding: "2%",
+  },
+  description: {
+    marginLeft: "auto"
   },
   expand: {
     transform: "rotate(0deg)",
@@ -31,11 +34,16 @@ const useStyles = makeStyles((theme) => ({
   },
   expandText: {
     cursor: "pointer",
-    marginLeft: "2%",
-    userSelect: "none"
+    userSelect: "none",
+    marginLeft: "auto",
   },
   expandOpen: {
     transform: "rotate(180deg)"
+  },
+  icon: {
+    "&:hover": {
+      backgroundColor: "transparent",
+    }
   },
 }));
 
@@ -54,34 +62,40 @@ const PhotoCard = ({ photo }) => {
         image={photo.url}
         title={photo.title}
       />
-      <CardActions disableSpacing="true">
-       <LikeButton className={classes.like} />
+      <CardActions disableSpacing>
       </CardActions>
-      <CardContent>
+      <CardContent className={classes.content}>
         <Typography variant="h6" align="left">
           {photo.title}
         </Typography>
-        <Typography align="left">
+        <Typography variant="body2" align="left">
           {photo.copyright ? 
-            <p>Copyright: {photo.copyright}</p>
+            <span>&copy; {photo.copyright}</span>
             :
-            <p>Copyright: None</p>
+            <span></span>
           }
-          <p>{photo.date}</p>
+        </Typography>
+        <Typography variant="body2" align="left">
+          <span>{photo.date}</span>
         </Typography>
       </CardContent>
-      <CardActions disableSpacing="true">
-        <Typography className={classes.expandText} variant="subtitle2" onClick={handleExpand}>
-          View description
-        </Typography>
-        <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded
-          })}
+      <CardActions disableSpacing>
+        <IconButton className={classes.icon} disableRipple>
+          <LikeButton />
+        </IconButton>
+        <IconButton 
+          className={`${classes.description} ${classes.icon}`} 
           onClick={handleExpand}
-          disableRipple="true"
+          disableRipple
         >
-          <ExpandMoreIcon />
+          <Typography variant="subtitle2">
+              View description
+          </Typography>
+          <ExpandMoreIcon 
+            className={clsx(classes.expand, {
+              [classes.expandOpen]: expanded
+            })}
+          />
         </IconButton>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>

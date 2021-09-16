@@ -26,6 +26,7 @@ function App() {
       <header className="App-header">
         <p>Spacestagram</p>
       </header>
+      <p>Brought to you by NASA's Astronomy Photo of the Day (APOD) API</p>
       {photos && (
         <div className="photos">
           {photos.map((photo, index) => (
