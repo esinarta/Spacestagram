@@ -11,15 +11,15 @@ function App() {
   const [photos, setPhotos] = useState([]);
   const [loaded, setLoaded] = useState(false);
 
-  const getPhotos = useCallback((count = 5) => {
+  const getPhotos = useCallback(() => {
     axios({
       method: 'get',
-      url: `${NASA_APOD_URL}?api_key=${NASA_API_KEY}&count=${count}`
+      url: `${NASA_APOD_URL}?api_key=${NASA_API_KEY}&count=5`
     }).then(res => {
-      setPhotos([...photos, ...res.data]);
+      setPhotos(photos => [...photos, ...res.data]);
       setLoaded(true);
     });
-  }, [photos]);
+  }, []);
 
   useEffect(() => {
     getPhotos();
@@ -34,7 +34,7 @@ function App() {
       <InfiniteScroll
         dataLength={photos}
         next={() => {
-          // getPhotos(5)
+          getPhotos(5)
         }}
         hasMore={true}
         loader={<h4>Loading...</h4>}

@@ -64,7 +64,9 @@ const PhotoCard = ({ photo }) => {
           title={photo.title}
         />
         :
-        ""
+        <Typography variant="body2">
+          "Video cannot be played."
+        </Typography>
       }
       <CardActions disableSpacing>
       </CardActions>
