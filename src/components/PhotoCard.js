@@ -92,7 +92,7 @@ const PhotoCard = ({ photo }) => {
           }
         </Typography>
         <Typography variant="body2" align="left">
-          <span>{photo.date}</span>
+          <span>{new Date(photo.date).toLocaleDateString()}</span>
         </Typography>
       </CardContent>
       <CardActions disableSpacing>

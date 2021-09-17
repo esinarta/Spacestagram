@@ -1,8 +1,6 @@
 # Spacestagram
 
-Shopify Front End Developer Intern Challenge - Winter 2022
-
-[Requirements Document](https://docs.google.com/document/d/1QlC6htA5SXEl3YruAOkJWj2-0W3w-n0UOzGuJ1EcktQ/edit#heading=h.cny9umcsnqqn)
+Shopify Front End Developer Intern Challenge - Winter 2022 ([Requirements](https://docs.google.com/document/d/1QlC6htA5SXEl3YruAOkJWj2-0W3w-n0UOzGuJ1EcktQ/edit#heading=h.cny9umcsnqqn))
 
 ## Hosted Project
 
