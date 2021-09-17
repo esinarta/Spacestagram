@@ -59,12 +59,11 @@ function App() {
                 () => setMode(mode === "light" ? "dark" : "light")
               } 
               color="inherit"
-              disableRipple
             >
               {mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
             </IconButton>
           </div>
-          <h2 id="subtitle">Brought to you by NASA's Astronomy Photo of the Day (APOD) API</h2>
+          
         </header>
         <body>
           <InfiniteScroll
