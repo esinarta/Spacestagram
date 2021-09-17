@@ -17,12 +17,14 @@
 #title {
   font-family: 'Satisfy', cursive;
   margin: 1% 0 0 5%;
+  user-select: none;
 }
 
 #subtitle {
   font-size: small;
   font-weight: 400;
   margin: 0 0 0.5% 5%;
+  user-select: none;
 }
 
 #toggle-icon {
