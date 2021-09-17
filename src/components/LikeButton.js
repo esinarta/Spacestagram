@@ -10,7 +10,6 @@ const LikeButton = () => {
       <Checkbox
         icon={<FavoriteBorderIcon />}
         checkedIcon={<FavoriteIcon />}
-        name="likeIcon"
       />
     }
   />

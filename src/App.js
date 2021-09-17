@@ -47,44 +47,47 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-    <CssBaseline />
-    <div className="App">
-      <header className="App-header">
-        <h1>Spacestagram</h1>
-        <h2>Brought to you by NASA's Astronomy Photo of the Day (APOD) API</h2>
-        <IconButton
-          style={{ backgroundColor: 'transparent' }}
-          sx={{ ml: 1 }} 
-          onClick={
-            () => setMode(mode === "light" ? "dark" : "light")
-          } 
-          color="inherit"
-          disableRipple
-        >
-          {mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
-        </IconButton>
-      </header>
-      <body>
-        <InfiniteScroll
-          dataLength={photos}
-          next={() => {
-            getPhotos()
-          }}
-          hasMore={true}
-          loader={<CircularProgress style={{"color": "grey"}}/>}
-          scrollThreshold={0.95}
-        >
-          {loaded ?
-            photos.map((photo, index) => (
-              <div key={index}>
-                <PhotoCard photo={photo}/>
-              </div>
-            ))
-            : ""
-          }
-        </InfiniteScroll>
-      </body>
-    </div>
+      <CssBaseline />
+      <div>
+        <header className="app-header">
+          <div className="app-title-row">
+            <h1 id="title">Spacestagram</h1>
+            <IconButton
+              id="toggle-icon"
+              sx={{ ml: 1 }} 
+              onClick={
+                () => setMode(mode === "light" ? "dark" : "light")
+              } 
+              color="inherit"
+              disableRipple
+            >
+              {mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+            </IconButton>
+          </div>
+          <h2 id="subtitle">Brought to you by NASA's Astronomy Photo of the Day (APOD) API</h2>
+        </header>
+        <body>
+          <InfiniteScroll
+            className="infinite-scroll"
+            dataLength={photos}
+            next={() => {
+              getPhotos()
+            }}
+            hasMore={true}
+            loader={<CircularProgress id="progress" />}
+            scrollThreshold={0.95}
+          >
+            {loaded ?
+              photos.map((photo, index) => (
+                <div key={index}>
+                  <PhotoCard photo={photo}/>
+                </div>
+              ))
+              : ""
+            }
+          </InfiniteScroll>
+        </body>
+      </div>
     </ThemeProvider>
   );
 }

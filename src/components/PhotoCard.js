@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       maxWidth: "90%",
     },
-    margin: "10% auto",
+    margin: "5% auto",
   },
   media: {
     paddingTop: "100%"
@@ -52,6 +52,8 @@ const useStyles = makeStyles((theme) => ({
   },
   errorText: {
     color: "red",
+    textAlign: "center",
+    margin: "5%",
   }
 }));
 
@@ -73,7 +75,7 @@ const PhotoCard = ({ photo }) => {
         />
         :
         <Typography className={classes.errorText} variant="body2">
-          Video cannot be played.
+          Error: Video cannot be played.
         </Typography>
       }
       <CardActions disableSpacing>
