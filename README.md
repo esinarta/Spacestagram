@@ -7,7 +7,7 @@ Shopify Front End Developer Intern Challenge - Winter 2022 ([Requirements](https
 https://esinarta.github.io/Spacestagram/
 
 ## Description
-Spacestagram is a React app that fetches and displays images from NASA's Astronomy Picture of the Day API. Images are presented with their title, copyright information, date, and explanation. Other features include liking/un-liking photos, loading indication, infinite scrolling, and toggling between light/dark themes.
+Spacestagram is a React app that fetches and displays images from NASA's Astronomy Picture of the Day API. Images are presented with their title, copyright information, date, and explanation. Other features include liking/un-liking photos, loading state indication, infinite scrolling, and toggling between light/dark themes.
 
 ## Installation Instructions
 
